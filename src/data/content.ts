@@ -193,3 +193,43 @@ export const MOCK_CONTACT = {
     youtube: "https://youtube.com",
   },
 };
+
+export interface TestimonialItem {
+  name: string;
+  role: string;
+  company: string;
+  comment: string;
+  rating: number;
+  tag: string;
+}
+
+export const TESTIMONIALS: TestimonialItem[] = [
+  {
+    name: "คุณธนกร วัฒนศิลป์",
+    role: "เจ้าของธุรกิจ E-Commerce & นำเข้าสินค้า",
+    company: "TK Prime Trading",
+    comment:
+      "ก่อนหน้านี้ปวดหัวเรื่องภาษีซื้อ-ขายและบิลออนไลน์มาก พอมาใช้บริการ PST Account ทีมงานช่วยจัดระบบเอกสารและยื่น VAT ตรงเวลาทุกเดือน สบายใจขึ้นเยอะมากครับ",
+    rating: 5,
+    tag: "ลูกค้าบริการรายเดือน 2 ปี",
+  },
+  {
+    name: "คุณพิมพา สุวรรณรัตน์",
+    role: "ผู้ก่อตั้ง Studio & Digital Agency",
+    company: "Pixel Craft Co., Ltd.",
+    comment:
+      "เริ่มต้นจากจดทะเบียนบริษัทกับ PST Account บริการเร็วมาก ให้คำแนะนำภาษีบุคคลกับนิติบุคคลแบบเข้าใจง่าย ตอนนี้ให้ดูแลบัญชีและยื่นภาษีต่อเนื่องเลยค่ะ",
+    rating: 5,
+    tag: "จดบริษัท + บัญชีรายเดือน",
+  },
+  {
+    name: "คุณอานนท์ เจริญกิจ",
+    role: "กรรมการผู้จัดการ",
+    company: "Green Fresh Delivery",
+    comment:
+      "ที่ประทับใจที่สุดคือการสื่อสาร ถามคำถามเรื่องบัญชีภาษีใน LINE ได้คำตอบเร็วและอธิบายด้วยภาษาที่คนทั่วไปเข้าใจได้ง่าย ไม่ผิดหวังที่เลือกที่นี่ครับ",
+    rating: 5,
+    tag: "ลูกค้าบริการรายเดือน",
+  },
+];
+
