@@ -4,32 +4,47 @@
 
 @layer base {
   :root {
-    --background: 255 255 255;
+    --background: 248 250 252;
     --foreground: 15 23 42;
+  }
+
+  .dark {
+    --background: 6 13 31;
+    --foreground: 241 245 249;
   }
   
   html {
     scroll-behavior: smooth;
-    color-scheme: light;
   }
   
   body {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    @apply bg-slate-50 text-slate-900 dark:bg-pst-dark dark:text-slate-100 transition-colors duration-300;
     font-family: var(--font-prompt), sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Custom Gradients & Styling for Light Theme */
+/* Custom Gradients & Styling */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #B48A1E 0%, #D4AF37 50%, #CA8A04 100%);
+  background: linear-gradient(135deg, #B48A1E 0%, #D4AF37 50%, #EAB308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gold-gradient {
+  background: linear-gradient(135deg, #FDE047 0%, #D4AF37 50%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-navy-gradient {
   background: linear-gradient(135deg, #0A1931 0%, #1E40AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-navy-gradient {
+  background: linear-gradient(135deg, #60A5FA 0%, #93C5FD 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -42,34 +57,28 @@
   background: linear-gradient(135deg, #0A1931 0%, #1E3A8A 100%);
 }
 
-.light-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+/* Theme-adaptive Card Styles */
+.theme-card {
+  @apply bg-white dark:bg-pst-navy/80 border border-slate-200 dark:border-slate-800/80 shadow-sm dark:shadow-none transition-all duration-300;
 }
 
-.light-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.theme-card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 dark:hover:border-pst-gold hover:shadow-lg dark:hover:shadow-gold-sm;
 }
 
-.light-card-hover:hover {
-  transform: translateY(-4px);
-  border-color: #D4AF37;
-  box-shadow: 0 12px 30px -4px rgba(212, 175, 55, 0.18), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+.theme-navbar {
+  @apply bg-white/80 dark:bg-pst-dark/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300;
 }
 
-.light-navbar {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-/* Background Subtle Dot / Grid Pattern */
+/* Background Pattern */
 .bg-light-pattern {
   background-size: 32px 32px;
-  background-image: 
-    radial-gradient(circle, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+.dark .bg-light-pattern {
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
 /* Custom Scrollbar */
@@ -78,14 +87,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  @apply bg-slate-100 dark:bg-pst-dark;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 4px;
+  @apply bg-slate-300 dark:bg-slate-700 rounded;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37;
+  @apply bg-pst-gold;
 }

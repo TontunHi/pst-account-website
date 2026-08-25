@@ -36,15 +36,19 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th" className={`${prompt.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased selection:bg-pst-gold/30 selection:text-pst-navy">
-        {children}
+    <html lang="th" suppressHydrationWarning className={`${prompt.variable} scroll-smooth`}>
+      <body className="min-h-screen bg-slate-50 text-slate-900 dark:bg-pst-dark dark:text-slate-100 antialiased selection:bg-amber-400/30 selection:text-slate-950">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

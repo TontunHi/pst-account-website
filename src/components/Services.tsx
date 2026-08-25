@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   FileText,
   Receipt,
@@ -64,59 +67,69 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 lg:py-28 relative bg-slate-50">
+    <section id="services" className="py-20 lg:py-28 relative bg-slate-50 dark:bg-pst-dark transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-amber-900 bg-amber-100 border border-amber-200">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+        >
+          <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-700/60">
             Our Services
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             บริการบัญชีและภาษี <br />
             <span className="text-gold-gradient">ครบวงจรสำหรับธุรกิจคุณ</span>
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
             ดูแลตั้งแต่เริ่มจัดตั้งบริษัท วางระบบบัญชี ยื่นภาษีรายเดือน ปิดงบประจำปี
             จนถึงการเป็นที่ปรึกษาเพื่อการเติบโตอย่างมั่นคง
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {serviceList.map((service, idx) => {
             const Icon = service.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="group relative bg-white rounded-3xl p-7 flex flex-col justify-between border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="group relative bg-white dark:bg-pst-navy/70 rounded-3xl p-7 flex flex-col justify-between border border-slate-200 dark:border-slate-800 hover:border-amber-400 dark:hover:border-pst-gold shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 p-2.5 flex items-center justify-center text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-700/60 p-2.5 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                       {service.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-pst-gold transition-colors">
                     {service.title}
                   </h3>
-                  <div className="text-xs text-slate-500 font-medium mb-3">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mb-3">
                     {service.subtitle}
                   </div>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-5">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
                     {service.desc}
                   </p>
 
-                  <div className="space-y-2 pt-3 border-t border-slate-100 mb-6">
+                  <div className="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800 mb-6">
                     {service.points.map((pt, pIdx) => (
                       <div
                         key={pIdx}
-                        className="flex items-center gap-2 text-xs text-slate-700 font-medium"
+                        className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium"
                       >
-                        <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                         <span>{pt}</span>
                       </div>
                     ))}
@@ -126,24 +139,30 @@ export default function Services() {
                 <div>
                   <Link
                     href="#estimator"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 hover:text-amber-800 transition-colors group-hover:translate-x-1 duration-200"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 transition-colors group-hover:translate-x-1 duration-200"
                   >
                     <span>ประเมินราคาสำหรับบริการนี้</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Banner CTA */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-50/80 via-white to-amber-50/80 border-2 border-amber-300 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-50/80 via-white to-amber-50/80 dark:from-pst-navy dark:via-pst-navyLight dark:to-pst-navy border-2 border-amber-300 dark:border-amber-500/50 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-lg sm:text-xl font-bold text-slate-900">
+            <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
               ยังไม่แน่ใจว่าธุรกิจของคุณต้องใช้บริการแพ็กเกจไหน?
             </h4>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
               ปรึกษาทีมงานผู้เชี่ยวชาญของ PST Account ได้ฟรี ไม่มีค่าใช้จ่ายเบื้องต้น
             </p>
           </div>
@@ -153,7 +172,7 @@ export default function Services() {
           >
             ประเมินค่าบริการทันที
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
